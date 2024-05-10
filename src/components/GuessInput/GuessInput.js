@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessInput({ guess, setGuess }) {
+function GuessInput({ guess, setGuess, guessResults, setGuessResults }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,7 +11,10 @@ function GuessInput({ guess, setGuess }) {
       return;
     }
 
-    console.log(guess);
+    const guessArray = [...guessResults, guess];
+    setGuessResults(guessArray);
+    console.log(guessArray);
+
     setGuess('');
   };
 
