@@ -4,6 +4,13 @@ function GuessInput({ guess, setGuess }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // redundant validation in case form validation doesn't work
+    if (guess.length !== 5) {
+      window.alert('Please enter 5-letter word. 💖');
+      return;
+    }
+
     console.log(guess);
     setGuess('');
   };
@@ -18,6 +25,7 @@ function GuessInput({ guess, setGuess }) {
           id="guess-input"
           type="text"
           pattern="[A-Z]{5}"
+          title="5 letter word"
           required
           value={guess}
           onChange={(e) => setGuess(e.target.value.toUpperCase())}
