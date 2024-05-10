@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function GuessInput({ guessResults, setGuessResults }) {
+function GuessInput({ handleSubmitGuess }) {
   const [guess, setGuess] = useState('');
 
   const handleSubmit = (e) => {
@@ -11,11 +11,9 @@ function GuessInput({ guessResults, setGuessResults }) {
       window.alert('Please enter 5-letter word. 💖');
       return;
     }
-
-    const guessArray = [...guessResults, guess];
-    setGuessResults(guessArray);
-    console.log(guessArray);
-
+    // update array of guesses in parent component
+    handleSubmitGuess(guess);
+    // clear the guess in the form
     setGuess('');
   };
 

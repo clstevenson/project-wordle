@@ -12,19 +12,19 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-  const [guess, setGuess] = useState('');
   const [guessResults, setGuessResults] = useState([]);
+
+  const handleSubmitGuess = (newGuess) => {
+    const guessArray = [...guessResults, newGuess];
+    setGuessResults(guessArray);
+  };
 
   return (
     <>
     <GuessResults guessResults={guessResults}/>
-    <GuessInput
-      guess={guess}
-      setGuess={setGuess}
-      guessResults={guessResults}
-      setGuessResults={setGuessResults} />
+    <GuessInput handleSubmitGuess={handleSubmitGuess} />
     </>
-  )
+  );
 }
 
 export default Game;
