@@ -16,14 +16,14 @@ console.info({ answer });
 function Game() {
   const [guessResults, setGuessResults] = useState([]);
   // status can be 'running', 'won', or 'lost'
-  const [status, setStatus] = useState('running');
+  const [gameStatus, setGameStatus] = useState('running');
 
   const handleSubmitGuess = (newGuess) => {
     const guessArray = [...guessResults, newGuess];
     if (newGuess===answer) {
-      setStatus('won');
+      setGameStatus('won');
     } else if (guessArray.length === NUM_OF_GUESSES_ALLOWED) {
-      setStatus('lost');
+      setGameStatus('lost');
     }
     setGuessResults(guessArray);
   };
@@ -31,8 +31,8 @@ function Game() {
   return (
     <>
       <GuessResults guessResults={guessResults} answer={answer}/>
-      <GuessInput handleSubmitGuess={handleSubmitGuess} />
-    {status !== 'running' && <GameOver status={status} answer={answer} numGuesses={guessResults.length}/>}
+      <GuessInput gameStatus={gameStatus} handleSubmitGuess={handleSubmitGuess} />
+    {gameStatus !== 'running' && <GameOver gameStatus={gameStatus} answer={answer} numGuesses={guessResults.length}/>}
     </>
   );
 }
