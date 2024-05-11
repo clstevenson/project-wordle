@@ -1,7 +1,7 @@
 import React from 'react';
 
-function GameOver({ gameWon, answer, numGuesses }) {
-  return gameWon
+function GameOver({ status, answer, numGuesses }) {
+  return status==='won'
     ?
     <div className="happy banner">
       <p>
